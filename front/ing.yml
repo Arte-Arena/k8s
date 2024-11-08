@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: front-ing
+  annotations:
+    cert-manager.io/cluster-issuer: "selfsigned"
+    spec.ingressClassName: "public"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+spec:
+  ingressClassName: "public"
+  tls:
+  - hosts:
+    - www.metamorfose.blog.br
+    secretName: www
+  rules:
+  - host: www.metamorfose.blog.br
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: front-svc
+            port:
+              number: 80

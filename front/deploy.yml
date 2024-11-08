@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deploy
+  labels:
+    app: front-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-deploy
+  template:
+    metadata:
+      labels:
+        app: front-deploy
+    spec:
+      containers:
+      - name: front-deploy
+        image: artearenahub/space-frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_API
+          value: "api-homolog.spacearena.net"
+
