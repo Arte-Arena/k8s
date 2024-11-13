@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: template-original-deploy
+  labels:
+    app: template-original-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: template-original-svc
+  template:
+    metadata:
+      labels:
+        app: template-original-deploy
+    spec:
+      containers:
+      - name: template-original-deploy
+        image: artearenahub/template-original:latest
+        ports:
+        - containerPort: 3000
