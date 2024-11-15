@@ -8,7 +8,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: template-original-svc
+      app: template-original-deploy
   template:
     metadata:
       labels:

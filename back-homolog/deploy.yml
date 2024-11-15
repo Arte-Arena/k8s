@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: back-deploy
+  name: back-deploy-homolog
   labels:
-    app: back-deploy
+    app: back-deploy-homolog
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: back-deploy
+      app: back-deploy-homolog
   template:
     metadata:
       labels:
-        app: back-deploy
+        app: back-deploy-homolog
     spec:
       containers:
-      - name: back-deploy
+      - name: back-deploy-homolog
         image: artearenahub/space-backend:latest
         ports:
         - containerPort: 3000
