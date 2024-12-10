@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docs-deploy-prod
+  labels:
+    app: docs-deploy-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docs-deploy-prod
+  template:
+    metadata:
+      labels:
+        app: docs-deploy-prod
+    spec:
+      containers:
+      - name: docs-deploy-prod
+        image: artearenahub/space-docs:latest
+        ports:
+        - containerPort: 80

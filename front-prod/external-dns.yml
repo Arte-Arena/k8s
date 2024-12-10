@@ -1,8 +1,0 @@
-provider: aws
-env:
-  - name: AWS_DEFAULT_REGION
-    value: sa-east-1
-serviceAccount:
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::741448940391:role/eksctl-arte-arena-eks-cluster-addon-iamservic-Role1-oJRYY95lq4Ji
-
