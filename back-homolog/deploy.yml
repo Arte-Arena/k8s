@@ -24,4 +24,6 @@ spec:
       - name: back-deploy-homolog
         image: artearenahub/space-backend:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 9000
+        command: ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
+
