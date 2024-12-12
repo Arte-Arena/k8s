@@ -19,6 +19,6 @@ spec:
         image: artearenahub/space-backend:latest
         ports:
         - containerPort: 3000
-        envfrom:
+        envFrom:
         - secretRef:
             name: back-homolog-secret
