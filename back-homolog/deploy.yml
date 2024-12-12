@@ -14,11 +14,14 @@ spec:
       labels:
         app: back-deploy-homolog
     spec:
+      initContainers:
+      - name: back-homolog-init-container
+        image: artearenahub/space-backend:latest
+        envFrom:
+        - secretRef:
+            name: back-homolog-secret
       containers:
       - name: back-deploy-homolog
         image: artearenahub/space-backend:latest
         ports:
         - containerPort: 3000
-        envFrom:
-        - secretRef:
-            name: back-homolog-secret
