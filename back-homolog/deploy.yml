@@ -14,16 +14,13 @@ spec:
       labels:
         app: back-deploy-homolog
     spec:
-      initContainers:
-      - name: back-homolog-init-container
-        image: artearenahub/space-backend:latest
-        envFrom:
-        - secretRef:
-            name: back-homolog-secret
       containers:
       - name: back-deploy-homolog
         image: artearenahub/space-backend:latest
         ports:
+        envFrom:
+        - secretRef:
+            name: back-homolog-secret
         - containerPort: 9000
-        command: ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
+        
 
