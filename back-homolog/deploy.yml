@@ -18,9 +18,9 @@ spec:
       - name: back-deploy-homolog
         image: artearenahub/space-backend:latest
         ports:
+        - containerPort: 9000
         envFrom:
         - secretRef:
             name: back-homolog-secret
-        - containerPort: 9000
         
 
