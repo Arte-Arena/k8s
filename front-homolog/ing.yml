@@ -9,10 +9,10 @@ spec:
   ingressClassName: "public"
   tls:
   - hosts:
-    - homolog.arenaspace.net
+    - homolog.spacearena.net
     secretName: front-homolog-tls-secret
   rules:
-  - host: homolog.arenaspace.net
+  - host: homolog.spacearena.net
     http:
       paths:
       - pathType: Prefix
