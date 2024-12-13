@@ -15,8 +15,8 @@ spec:
   - host: api-homolog.spacearena.net
     http:
       paths:
-      - path: /?(.*)
-        pathType: Prefix
+      - pathType: Prefix
+        path: "/"
         backend:
           service:
             name: back-svc-homolog
