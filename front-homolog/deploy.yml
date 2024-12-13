@@ -16,7 +16,6 @@ spec:
     spec:
       containers:
       - name: front-deploy-homolog
-        image: artearenahub/space-frontend:latest
+        image: artearenahub/space-frontend-homolog:latest
         ports:
         - containerPort: 3000
-
