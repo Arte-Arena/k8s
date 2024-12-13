@@ -9,10 +9,10 @@ spec:
   ingressClassName: "public"
   tls:
   - hosts:
-    - homolog-api.spacearena.net
+    - api-homolog.spacearena.net
     secretName: back-homolog-tls-secret
   rules:
-  - host: homolog-api.spacearena.net
+  - host: api-homolog.spacearena.net
     http:
       paths:
       - path: /?(.*)
