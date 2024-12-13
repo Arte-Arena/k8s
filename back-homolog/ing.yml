@@ -12,7 +12,7 @@ spec:
     - homolog-api.spacearena.net
     secretName: back-homolog-tls-secret
   rules:
-  - host: homolog-api.artearena.com.br
+  - host: homolog-api.spacearena.net
     http:
       paths:
       - path: /?(.*)
