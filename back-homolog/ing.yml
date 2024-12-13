@@ -1,21 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: back-ing
+  name: back-ing-homolog
   annotations:
-    spec.ingressClassName: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    cert-manager.io/cluster-issuer: "back-clusterissuer-homolog"
+    spec.ingressClassName: "public"
 spec:
+  ingressClassName: "public"
+  tls:
+- hosts:
+  - homolog-api.spacearena.net
+  secretName: back-homolog-tls-secret
   rules:
-  - host: api.artearena.com.br
+  - host: homolog-api.artearena.com.br
     http:
       paths:
       - path: /?(.*)
         pathType: Prefix
         backend:
           service:
-            name: back-svcs
+            name: back-svc-homolog
             port:
               number: 80
-
-
