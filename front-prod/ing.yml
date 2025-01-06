@@ -11,6 +11,7 @@ spec:
   tls:
   - hosts:
     - www.spacearena.net
+    - spacearena.net
     secretName: front-prod-tls-secret
   rules:
   - host: www.spacearena.net
