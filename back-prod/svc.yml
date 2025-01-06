@@ -2,19 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: back-svc-prod
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: api.spacearena.net
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:sa-east-1:741448940391:certificate/b83c71df-365f-468b-94ee-126c5cd1bc5d
-    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
 spec:
-  type: LoadBalancer
   selector:
     app: back-deploy-prod
   ports:
-    - name: http
+    - protocol: TCP
       port: 80
       targetPort: 9000
-    - name: https
-      port: 443
-      targetPort: 9000
+  type: LoadBalancer
+  

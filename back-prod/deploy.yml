@@ -19,3 +19,8 @@ spec:
         image: artearenahub/space-backend:latest
         ports:
         - containerPort: 9000
+        envFrom:
+        - secretRef:
+            name: back-prod-secret
+        
+
