@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: back-deploy-homolog
-        image: artearenahub/space-backend:latest
+        image: artearenahub/space-backend-homolog:latest
         ports:
         - containerPort: 9000
         envFrom:
