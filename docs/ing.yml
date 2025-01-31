@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docs-ing-prod
+  annotations:
+    cert-manager.io/cluster-issuer: "docs-clusterissuer-prod"
+    spec.ingressClassName: "public"s
+spec:
+  ingressClassName: "public"
+  tls:
+  - hosts:
+    - docs.spacearena.net
+    secretName: docs-prod-tls-secret
+  rules:
+  - host: docs.spacearena.net
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: docs-svc-prod
+            port:
+              number: 80
+
