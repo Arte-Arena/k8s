@@ -4,7 +4,7 @@ metadata:
   name: docs-ing-prod
   annotations:
     cert-manager.io/cluster-issuer: "docs-clusterissuer-prod"
-    spec.ingressClassName: "public"s
+    spec.ingressClassName: "public"
 spec:
   ingressClassName: "public"
   tls:
