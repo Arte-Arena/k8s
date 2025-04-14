@@ -5,16 +5,15 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "front-client-clusterissuer-prod"
     spec.ingressClassName: "public"
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "false"
 spec:
   ingressClassName: "public"
   tls:
   - hosts:
     - my.spacearena.net
-    - spacearena.net
     secretName: front-client-prod-tls-secret
   rules:
-  - host: www.my.spacearena.net
+  - host: my.spacearena.net
     http:
       paths:
       - pathType: Prefix
