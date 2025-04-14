@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+ name: back-client-clusterissuer-prod
+spec:
+ acme:
+   email: leandro@artearena.com.br
+   server: https://acme-v02.api.letsencrypt.org/directory
+   privateKeySecretRef:
+     name: lets-encrypt-account-key
+   solvers:
+   - http01:
+       ingress:
+         class: public

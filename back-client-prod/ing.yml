@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: back-client-ing-prod
+  annotations:
+    cert-manager.io/cluster-issuer: "back-client-clusterissuer-prod"
+    spec.ingressClassName: "public"
+spec:
+  ingressClassName: "public"
+  tls:
+  - hosts:
+    - api.my.spacearena.net
+    secretName: back-client-prod-tls-secret
+  rules:
+  - host: api.my.spacearena.net
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: back-client-svc-prod
+            port:
+              number: 80
