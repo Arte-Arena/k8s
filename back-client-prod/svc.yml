@@ -4,7 +4,7 @@ metadata:
   name: back-client-svc-prod
 spec:
   selector:
-    app: back-client-deploy-prod
+    app: back-client-prod
   ports:
     - protocol: TCP
       port: 80
