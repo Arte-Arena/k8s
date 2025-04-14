@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-client-prod
+  labels:
+    app: front-client-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-client-prod
+  template:
+    metadata:
+      labels:
+        app: front-client-prod
+    spec:
+      containers:
+      - name: front-client-prod
+        image: artearenahub/space-frontend-client:latest
+        ports:
+        - containerPort: 3000
