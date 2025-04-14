@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-client-prod
+  labels:
+    app: back-client-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: back-client-prod
+  template:
+    metadata:
+      labels:
+        app: back-client-prod
+    spec:
+      containers:
+      - name: back-client-prod
+        image: artearenahub/space-backend-client:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: back-client-prod-secret
+        
+
