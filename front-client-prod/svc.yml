@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: front-svc-prod
+  name: front-client-svc-prod
 spec:
   selector:
-    app: front-deploy-prod
+    app: front-client-prod
   ports:
     - protocol: TCP
       port: 80
