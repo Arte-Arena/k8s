@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: fetch-octa-chat-sync
+  namespace: default
+spec:
+  schedule: "0 8,12 * * *"
+  timeZone: "America/Sao_Paulo"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: fetch-octa
+              image: artearenahub/octa-chat-sync-pipeline-fetch-octa:latest
+              env:
+                - name: MONGO_URI
+                  valueFrom:
+                    secretKeyRef:
+                      name: back-client-prod-secret
+                      key: MONGODB_URI
