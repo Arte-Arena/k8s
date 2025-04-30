@@ -31,7 +31,7 @@ ingress:
   hostname: nextcloud.spacearena.net
   annotations:
     kubernetes.io/ingress.class: "public"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "nextcloud-issuer"
   tls:
     - hosts:
         - nextcloud.spacearena.net
