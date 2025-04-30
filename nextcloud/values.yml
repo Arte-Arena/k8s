@@ -1,27 +1,48 @@
-# values.yaml
-mariadb:
+## 1) Banco de dados
+internalDatabase:
   enabled: false
-externalDatabase:
-  existingSecret: nextcloud-db-secret
 
+externalDatabase:
+  enabled: true
+  type: mysql
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-db-secret
+    usernameKey: database-user
+    passwordKey: database-password
+    hostKey:     database-host
+    databaseKey: database-name
+
+## 2) Persistência de dados
 persistence:
   enabled: true
-  storageClass: microk8s-hostpath
+  accessMode: ReadWriteOnce
   size: 20Gi
 
-## 4) Ingress para expor o serviço
+nextcloudData:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 20Gi
+
+## 3) Ingress (HTTP/S)
 ingress:
   enabled: true
   ingressClassName: public
-  hostname: nextcloud.artearena.net
+  hostname: nextcloud.spacearena.net
   annotations:
     kubernetes.io/ingress.class: "public"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   tls:
     - hosts:
-        - nextcloud.artearena.net
+        - nextcloud.spacearena.net
       secretName: nextcloud-tls
 
-## 5) Imagem (opcional)
-image:
-  tag: latest
+## 4) Desativa subcharts não utilizados
+mariadb:
+  enabled: false
+postgresql:
+  enabled: false
+redis:
+  enabled: false
+
+
