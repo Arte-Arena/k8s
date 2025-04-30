@@ -1,0 +1,27 @@
+# values.yaml
+mariadb:
+  enabled: false
+externalDatabase:
+  existingSecret: nextcloud-db-secret
+
+persistence:
+  enabled: true
+  storageClass: microk8s-hostpath
+  size: 20Gi
+
+## 4) Ingress para expor o serviço
+ingress:
+  enabled: true
+  ingressClassName: public
+  hostname: nextcloud.artearena.net
+  annotations:
+    kubernetes.io/ingress.class: "public"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  tls:
+    - hosts:
+        - nextcloud.artearena.net
+      secretName: nextcloud-tls
+
+## 5) Imagem (opcional)
+image:
+  tag: latest
